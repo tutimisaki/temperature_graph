@@ -11,6 +11,25 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
+    url = "https://api.open-meteo.com/v1/forecast?latitude=35.69&longitude=139.69&hourly=temperature_2m&forecast_days=1&timezone=Asia%2FTokyo"
+    r = requests.get(url)
+
+    json_load = json.loads(r.text)
+    
+    fig = plt.figure()
+    x = np.arange(24)
+    y = json_load['hourly']['temperature_2m']
+    bar_list = plt.bar(x, y,  label="test")
+    bar_list[2].set_color("red")
+
+    io = BytesIO()
+    fig.savefig(io, format="png")
+    io.seek(0)
+    base64_img = base64.b64encode(io.read()).decode()
+
+    test_value = 5
+
+    return render_template('index.html', img=base64_img, test_value=test_value)
     return render_template('index.html')
 
 @app.route("/index", methods=["GET"])
@@ -27,7 +46,7 @@ def index():
     x = np.arange(24)
     y = json_load['hourly']['temperature_2m']
     bar_list = plt.bar(x, y,  label="test")
-    #bar_list[2].set_color("red")
+    
 
     io = BytesIO()
     fig.savefig(io, format="png")
