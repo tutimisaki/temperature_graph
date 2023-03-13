@@ -1,0 +1,8 @@
+Flask
+Gunicorn
+BytesIO
+base64
+matplotlib.pyplot
+numpy
+requests
+json
