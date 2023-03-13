@@ -26,10 +26,14 @@ def index():
     fig = plt.figure()
     x = np.arange(24)
     y = json_load['hourly']['temperature_2m']
-    plt.bar(x, y,  label="test")
+    bar_list = plt.bar(x, y,  label="test")
+    bar_list[2].set_color("red")
+
     io = BytesIO()
     fig.savefig(io, format="png")
     io.seek(0)
     base64_img = base64.b64encode(io.read()).decode()
 
-    return render_template('index.html', img=base64_img)
+    test_value = 5
+
+    return render_template('index.html', img=base64_img, test_value=test_value)
