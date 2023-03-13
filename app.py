@@ -27,7 +27,7 @@ def index():
     x = np.arange(24)
     y = json_load['hourly']['temperature_2m']
     bar_list = plt.bar(x, y,  label="test")
-    bar_list[2].set_color("red")
+    #bar_list[2].set_color("red")
 
     io = BytesIO()
     fig.savefig(io, format="png")
