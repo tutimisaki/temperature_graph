@@ -16,7 +16,7 @@
             <p>現在の気温：<span id="temperature-value">{{ result["temperature"] }}℃</span></p>
         </div>
         <div id="temperature-praph">
-            <img src="data:image/png;base64,{{ result['base64_img'] }}">
+            <img src="data:image/png;base64,{{ result['base64_img'] }}" id="graph_img">
         </div>
         {% endblock %}
     </body>
