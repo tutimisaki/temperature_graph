@@ -7,6 +7,7 @@ import numpy as np
 import requests
 import json
 import datetime
+import japanize_matplotlib
 
 app = Flask(__name__)
 
@@ -27,15 +28,18 @@ plt.yticks(np.arange(0, 50, 5)) # 5℃ごとに目盛りを表示する(45℃ま
 plt.ylim(0, 50) # 気温の高さによってグラフの表示範囲がばらつかないようにグラフの表示上限位置を50℃で固定する
 
 # 各ラベルの設定
-plt.title("本日の気温", fontname="MS Gothic")
-plt.xlabel("時間", fontname="MS Gothic")
-plt.ylabel("気温（℃）", fontname="MS Gothic")
+plt.title("本日の気温")
+plt.xlabel("時間")
+plt.ylabel("気温（℃）")
 
 # 棒グラフを作成する
 bar_list = plt.bar(x, y)
 
 # 現在時刻を取得し、該当する時刻の帯の色を強調する
-now_date = datetime.datetime.now()
+# ※render.comのWebサーバ上で確認すると、別リージョンのタイムゾーンで時刻を取得するため
+# ※時刻のずれを調整して取得（render.comに東京リージョンが追加されるまでの暫定策）
+DATE_DIFF_HOUR = 9
+now_date = datetime.datetime.now() + datetime.timedelta(hours=DATE_DIFF_HOUR)
 bar_list[now_date.hour].set_color("#ff7f00")
 
 # 遷移先のページでグラフを表示するためグラフの画像をbase64形式に変換する
