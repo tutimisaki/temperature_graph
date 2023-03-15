@@ -1,6 +1,8 @@
 # temperature_graph
 当日の東京の気温グラフを表示するWebページです
+
 気温データは以下のサイトのWebAPIから取得しています
+
 [Open-Meteo Free Weather API](https://open-meteo.com/)
 
 ## Dependency(使用言語、ライブラリ等)
@@ -27,7 +29,9 @@
 
 ## Usage(利用方法)
 以下のURLからWebページにアクセスすることができます
-アクセスすると、当日の東京の気温グラフを確認することができます
+
+Webページにアクセスすることで、当日の東京の気温グラフを確認することができます
+
 [今日の東京の気温グラフ](https://temperature-graph.onrender.com/)
 
 ## References(参考情報)
@@ -51,4 +55,4 @@ Render.comについてはフリープランを利用しています。
 またフリープランではWebサービスが1か月あたり750時間利用可能という制限があります。
 1か月のWebサービスの稼働時間が750時間を超過した場合、Webページにアクセスできなくなります。
 
-[参考情報](https://render.com/docs/free)
+[参考情報 Free Instance Types Render.com](https://render.com/docs/free)
