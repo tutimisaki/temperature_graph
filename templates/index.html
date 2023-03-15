@@ -3,19 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TODOタスクページ</title>
+        <title>{{ result["now_month"] }}月{{ result["now_day"] }}日の気温グラフ</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
     </head>
     <body>
         {% block body %}
-
-            <div style="margin-left: 150px;">
-                <img src="data:image/png;base64,{{ img }}">
-            </div>
-
+        <div id="text-area">
+            <h1>{{ result["now_month"] }}月{{ result["now_day"] }}日の東京の気温グラフ</h1>
+            <p>{{ result["now_hour"] }}時の帯をオレンジ色で表示しています</p>
+            <p>現在の気温：<span id="temperature-value">{{ result["temperature"] }}℃</span></p>
+        </div>
+        <div id="temperature-praph">
+            <img src="data:image/png;base64,{{ result['base64_img'] }}">
+        </div>
         {% endblock %}
-        {{ img }}
-        {{ test_value }}
     </body>
 </html>
